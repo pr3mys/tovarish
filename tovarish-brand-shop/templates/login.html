@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Вход{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-5">
+        <div class="card p-4">
+            <h2 class="text-center mb-4">Вход</h2>
+            {% if error %}
+                <div class="alert alert-danger">{{ error }}</div>
+            {% endif %}
+            <form method="POST">
+                <div class="mb-3">
+                    <label class="form-label">Логин</label>
+                    <input type="text" class="form-control" name="username" required placeholder="Введите логин">
+                </div>
+                <div class="mb-4">
+                    <label class="form-label">Пароль</label>
+                    <input type="password" class="form-control" name="password" required placeholder="Введите пароль">
+                </div>
+                <button type="submit" class="btn btn-dark w-100 py-2">Войти</button>
+            </form>
+            <div class="text-center mt-3">
+                <span>Нет аккаунта?</span>
+                <a href="/register">Зарегистрироваться</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Личный кабинет{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4">
+        <div class="card p-4">
+            <h4>Привет, {{ session.username }}</h4>
+            <a href="/offers" class="btn btn-dark w-100 mt-3">На витрину</a>
+            <a href="/basket" class="btn btn-outline-dark w-100 mt-2">Корзина</a>
+            <a href="/orders" class="btn btn-outline-dark w-100 mt-2">Мои заказы</a>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="card p-4">
+            <h4>Последние заказы</h4>
+            {% if orders %}
+                <table class="table mt-3">
+                    <thead>
+                        <tr><th>Товар</th><th>Размер</th><th>Цена</th><th>Статус</th></tr>
+                    </thead>
+                    <tbody>
+                        {% for order in orders %}
+                        <tr>
+                            <td>{{ order.product_name }}</td>
+                            <td>{{ order.size }}</td>
+                            <td>{{ order.price }} руб</td>
+                            <td>{{ order.status }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>Заказов пока нет</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

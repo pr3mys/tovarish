@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Мои заказы{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Мои заказы</h2>
+
+{% if orders %}
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Товар</th>
+                    <th>Размер</th>
+                    <th>Цена</th>
+                    <th>Статус</th>
+                    <th>Дата</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                <tr>
+                    <td>{{ order.product_name }}</td>
+                    <td>{{ order.size }}</td>
+                    <td>{{ order.price }} руб</td>
+                    <td>{{ order.status }}</td>
+                    <td>{{ order.created_at.strftime("%d.%m.%Y %H:%M") }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% else %}
+    <p>У вас пока нет заказов</p>
+{% endif %}
+
+<a href="/offers" class="btn btn-dark mt-3">На витрину</a>
+{% endblock %}

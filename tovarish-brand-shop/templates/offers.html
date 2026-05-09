@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Витрина{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Витрина</h2>
+    <a href="/basket" class="btn btn-outline-dark position-relative">
+        Корзина
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            {{ cart_count }}
+        </span>
+    </a>
+</div>
+
+<div class="mb-4">
+    <a href="/offers/all" class="btn btn-sm btn-outline-dark me-1">Все</a>
+    <a href="/offers/pants" class="btn btn-sm btn-outline-dark me-1">Штаны</a>
+    <a href="/offers/t-shirts" class="btn btn-sm btn-outline-dark me-1">Футболки</a>
+    <a href="/offers/shoes" class="btn btn-sm btn-outline-dark me-1">Ботинки</a>
+    <a href="/offers/hoodies" class="btn btn-sm btn-outline-dark me-1">Кофты</a>
+    <a href="/offers/socks" class="btn btn-sm btn-outline-dark me-1">Носки</a>
+</div>
+
+<div class="row">
+    {% for product in products %}
+    <div class="col-md-4 mb-4">
+        <div class="card">
+            <img src="/static/images/{{ product.id }}.png" class="card-img-top w-100" style="height: 300px; object-fit: contain; background: #f5f5f5;" alt="{{ product.name }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="card-text text-muted">{{ product.price }} руб</p>
+                <p class="card-text">
+                    {% if product.stock > 0 %}
+                        <span class="text-success">В наличии: {{ product.stock }} шт.</span>
+                    {% else %}
+                        <span class="text-danger">Нет в наличии</span>
+                    {% endif %}
+                </p>
+                <a href="/product_card/{{ product.id }}" class="btn btn-dark btn-sm">Подробнее</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Tovarish Brand Shop{% endblock %}
+
+{% block content %}
+<div class="text-center py-5">
+    <h1 class="display-4 fw-bold mb-3">TOVARISH BRAND SHOP</h1>
+    <p class="lead mb-2">Лучшие дизайнерские модели одежды от печально известного бренда Tovarish</p>
+    <p class="lead mb-2">Еще больше качественной мужской стильной одежды на нашем сайте</p>
+
+    <div class="row mb-4 mt-4">
+        <div class="col-md-4 mb-3">
+            <img src="/static/images/banner1.png" class="rounded w-100" style="height: 800px; object-fit: cover;" alt="Demon jeans">
+            <p class="mt-2 fw-bold">Demon jeans</p>
+        </div>
+        <div class="col-md-4 mb-3">
+            <img src="/static/images/banner2.png" class="rounded w-100" style="height: 800px; object-fit: cover;" alt="Vetemetovarish">
+            <p class="mt-2 fw-bold">Vetemetovarish</p>
+        </div>
+        <div class="col-md-4 mb-3">
+            <img src="/static/images/banner3.png" class="rounded w-100" style="height: 800px; object-fit: cover;" alt="Tovarish shoes">
+            <p class="mt-2 fw-bold">Tovarish shoes</p>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mb-5">
+        <div class="col-lg-8">
+            <p class="fs-5">Tovarish Brand Shop - малоизвестный модный дом для нишевой одежды, для узких лиц. Это бренд, бросающий вызов устаревшей моде и ставящий новые рамки приличия. Пока обычные люди будут высмеивать и не понимать бренд - мы будем на десять лет впереди, и только тогда, когда взгляды людей прозреют, они поймут - за нами будущее. Мы уничтожим нынешние границы, придуманные людьми до нас, ведь мы - люди настоящего.</p>
+        </div>
+    </div>
+
+    {% if not session.user_id %}
+        <a href="/register" class="btn btn-dark btn-lg me-2">Регистрация</a>
+        <a href="/login" class="btn btn-outline-dark btn-lg">Войти</a>
+    {% else %}
+        <a href="/offers" class="btn btn-dark btn-lg">На витрину</a>
+    {% endif %}
+</div>
+{% endblock %}
